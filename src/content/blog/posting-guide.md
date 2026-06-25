@@ -53,4 +53,4 @@ git commit -m "post: 새 글 추가"
 git push
 ```
 
-GitHub에 push 되는 순간 Vercel이 자동으로 빌드하고 몇십 초 안에 사이트에 반영한다. 별도의 배포 명령은 필요 없다.
+`main` 브랜치에 push 되는 순간 GitHub Actions가 자동으로 빌드해 GitHub Pages로 배포한다. 보통 1~2분 안에 사이트에 반영되며, 별도의 배포 명령은 필요 없다. 진행 상황은 저장소의 Actions 탭에서 확인할 수 있다.

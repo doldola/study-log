@@ -6,8 +6,9 @@ import { defineConfig, fontProviders } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-	// 배포 후 실제 도메인으로 업데이트하세요 (RSS·사이트맵·canonical에 사용됨).
-	site: 'https://study-log.vercel.app',
+	// GitHub Pages 프로젝트 사이트. site의 호스트는 인증 후 실제 사용자명으로 자동 설정됩니다.
+	site: 'https://example.github.io',
+	base: '/study-log',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{

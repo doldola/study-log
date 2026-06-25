@@ -1,6 +1,6 @@
 # study-log
 
-공부하며 배운 것과 PoC를 기록하는 개발 블로그. [Astro](https://astro.build/)로 만들었고 [Vercel](https://vercel.com/)로 자동 배포된다.
+공부하며 배운 것과 PoC를 기록하는 개발 블로그. [Astro](https://astro.build/)로 만들었고 GitHub Actions로 [GitHub Pages](https://pages.github.com/)에 자동 배포된다.
 
 ## 로컬 실행
 
@@ -15,7 +15,7 @@ npm run dev      # http://localhost:4321
 
 ## 배포
 
-`main` 브랜치에 push 하면 Vercel이 자동으로 빌드·배포한다.
+`main` 브랜치에 push 하면 GitHub Actions(`.github/workflows/deploy.yml`)가 자동으로 빌드해 GitHub Pages에 배포한다.
 
 ```bash
 git add .
