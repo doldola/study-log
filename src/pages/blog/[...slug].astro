@@ -3,7 +3,10 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
+	// draft 글은 프로덕션 빌드에서 페이지를 생성하지 않는다(로컬 dev에서는 미리보기 가능).
+	const posts = await getCollection('blog', (post) =>
+		import.meta.env.PROD ? !post.data.draft : true,
+	);
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: post,

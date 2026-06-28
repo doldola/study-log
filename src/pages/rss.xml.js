@@ -3,7 +3,9 @@ import rss from '@astrojs/rss';
 import { SITE_DESCRIPTION, SITE_TITLE, withBase } from '../consts';
 
 export async function GET(context) {
-	const posts = await getCollection('blog');
+	const posts = await getCollection('blog', (post) =>
+		import.meta.env.PROD ? !post.data.draft : true,
+	);
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,

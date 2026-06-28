@@ -7,9 +7,10 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import Header from '../../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, withBase } from '../../consts';
 
-const posts = (await getCollection('blog')).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+// 프로덕션 빌드에서는 draft 글을 제외하고, 로컬 dev에서는 미리보기 위해 모두 표시한다.
+const posts = (
+	await getCollection('blog', (post) => (import.meta.env.PROD ? !post.data.draft : true))
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <!doctype html>
