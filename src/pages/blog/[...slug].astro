@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import BlogPost from '../../layouts/BlogPost.astro';
+import SeriesNav from '../../components/SeriesNav.astro';
 
 export async function getStaticPaths() {
 	// draft 글은 프로덕션 빌드에서 페이지를 생성하지 않는다(로컬 dev에서는 미리보기 가능).
@@ -19,5 +20,6 @@ const { Content } = await render(post);
 ---
 
 <BlogPost {...post.data}>
+	{post.data.series && <SeriesNav series={post.data.series} currentId={post.id} />}
 	<Content />
 </BlogPost>

@@ -4,6 +4,8 @@ description: '마크다운 파일 하나를 추가하고 git push 한 번으로 
 pubDate: '2026-06-25'
 heroImage: '../../assets/blog-placeholder-2.jpg'
 tags: ['가이드', 'Astro', '배포']
+series: '블로그 가이드'
+seriesOrder: 1
 ---
 
 새 글을 올리는 과정은 마크다운 파일 하나를 만들고 git에 push 하는 것이 전부다.

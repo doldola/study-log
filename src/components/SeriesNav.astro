@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import { withBase } from '../consts';
+
+interface Props {
+	series: string;
+	currentId: string;
+}
+
+const { series, currentId } = Astro.props;
+
+// 같은 시리즈의 글을 모아 순서대로 정렬한다(seriesOrder 우선, 없으면 작성일 순).
+const posts = (
+	await getCollection('blog', (post) => (import.meta.env.PROD ? !post.data.draft : true))
+)
+	.filter((post) => post.data.series === series)
+	.sort((a, b) => {
+		const ao = a.data.seriesOrder ?? Number.POSITIVE_INFINITY;
+		const bo = b.data.seriesOrder ?? Number.POSITIVE_INFINITY;
+		return ao !== bo ? ao - bo : a.data.pubDate.valueOf() - b.data.pubDate.valueOf();
+	});
+
+const currentIndex = posts.findIndex((post) => post.id === currentId);
+---
+
+{
+	posts.length > 1 && (
+		<aside class="series">
+			<p class="series-head">
+				📚 <strong>{series}</strong> 시리즈 · {currentIndex + 1}/{posts.length}
+			</p>
+			<ol>
+				{posts.map((post) => (
+					<li class:list={[{ current: post.id === currentId }]}>
+						{post.id === currentId ? (
+							<span>{post.data.title}</span>
+						) : (
+							<a href={withBase(`/blog/${post.id}/`)}>{post.data.title}</a>
+						)}
+					</li>
+				))}
+			</ol>
+		</aside>
+	)
+}
+
+<style>
+	.series {
+		margin: 0 0 2em;
+		padding: 1em 1.25em;
+		font-size: 0.9em;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 12px;
+		background: rgba(var(--gray-light), 50%);
+	}
+	.series-head {
+		margin: 0 0 0.5em;
+	}
+	.series ol {
+		margin: 0;
+		padding-left: 1.4em;
+	}
+	.series li {
+		margin: 0.25em 0;
+	}
+	.series li.current span {
+		font-weight: 700;
+		color: rgb(var(--black));
+	}
+</style>

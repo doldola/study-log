@@ -4,6 +4,8 @@ description: '글에서 자주 쓰는 마크다운 문법과 코드 하이라이
 pubDate: '2026-06-25'
 heroImage: '../../assets/blog-placeholder-4.jpg'
 tags: ['가이드', '마크다운']
+series: '블로그 가이드'
+seriesOrder: 2
 ---
 
 이 글은 블로그에서 자주 쓰는 마크다운 요소가 실제로 어떻게 렌더링되는지 보여 주는 참고용 글이다.

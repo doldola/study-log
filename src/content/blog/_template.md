@@ -5,6 +5,8 @@ pubDate: '2026-06-28'
 # heroImage: '../../assets/blog-placeholder-1.jpg'   # 선택: src/assets 의 이미지 경로
 tags: ['문제해결']                                     # 예: 문제해결 / PoC / 공부 / TypeScript
 draft: true     # 완성되면 false 로 바꾸거나 이 줄을 삭제 (true면 배포 시 숨김, 로컬에선 보임)
+# series: 'OO 파헤치기'   # 선택: 같은 시리즈 글끼리 묶어 내비게이션 표시
+# seriesOrder: 1          # 선택: 시리즈 내 순서(작을수록 앞, 없으면 작성일 순)
 ---
 
 > 이 파일은 새 글을 시작할 때 복사해서 쓰는 템플릿입니다.
